@@ -23,6 +23,19 @@
             box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
             width: 350px;
         }
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 69, 0, 0.9);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-size: 2px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+        }
         .input-box {
             display: flex;
             align-items: center;
@@ -83,6 +96,11 @@
     </style>
 </head>
 <body>
+
+    <div id="beta-notification" class="notification">
+        (Sayen) Website masih teaster tidak support link foto
+    </div>
+
     <div class="container">
         <h2>Download video TikTok</h2>
         <div class="input-box">
@@ -97,7 +115,7 @@
             <img id="profilePic" src="" alt="Profile" width="100" style="border-radius: 50%;">
             <h3 id="username"></h3>
             <p id="description"></p>
-            <video id="videoPreview" controls width="100%"></video>
+            <video id="videoPreview" controls loop autoplay width="100%"></video>
             <div class="download-options">
                 <button id="downloadVideo">Download Video</button>
                 <button id="downloadAudio">Download Audio</button>
@@ -106,12 +124,22 @@
     </div>
     
     <script>
+        // Notifikasi Beta Test
+        setTimeout(() => {
+            const notification = document.getElementById("beta-notification");
+            notification.style.transform = "translateX(-50%) translateY(-50px)";
+            notification.style.opacity = "0";
+            setTimeout(() => notification.remove(), 500);
+        }, 3000);
+
+        // Tempel URL dari clipboard
         function pasteUrl() {
             navigator.clipboard.readText().then(text => {
                 document.getElementById("videoUrl").value = text;
             });
         }
 
+        // Ambil Video dari API
         async function fetchVideo() {
             const url = document.getElementById("videoUrl").value;
             if (!url) {
@@ -148,5 +176,6 @@
             }
         }
     </script>
+
 </body>
 </html>
