@@ -1,85 +1,33 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notifikasi Website</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
+<div id="beta-notification" class="notification">
+    Website ini masih dalam beta test
+</div>
+
+<style>
+    .notification {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 69, 0, 0.9);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.5s ease-out, opacity 0.5s ease-out;
     }
-    .notification-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: #ffcc00;
-      color: #333;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-      z-index: 1000;
-    }
-    .notification-bar p {
-      margin: 0;
-      font-size: 16px;
-      font-weight: bold;
-    }
-    .notification-bar button {
-      background-color: transparent;
-      border: none;
-      color: #333;
-      font-size: 20px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    .notification-bar button:hover {
-      color: red;
-    }
-    .content {
-      margin-top: 60px; /* Memberikan ruang di bawah notifikasi */
-      padding: 20px;
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
+</style>
 
-  <!-- Notifikasi -->
-  <div class="notification-bar" id="notification">
-    <p>💬(Sayen) Masih teaster belum support tiktok foto! </p>
-    <button onclick="closeNotification()">×</button>
-  </div>
+<script>
+    setTimeout(() => {
+        const notification = document.getElementById("beta-notification");
+        notification.style.transform = "translateX(-50%) translateY(-50px)";
+        notification.style.opacity = "0";
+        setTimeout(() => notification.remove(), 500);
+    }, 3000); // Hilang setelah 3 detik
+</scrip>
 
-  <!-- Konten Halaman -->
-  <div class="content">
-    <h1>     </h1>
-    <p>     </p>
-  </div>
-
-  <script>
-    function closeNotification() {
-      const notification = document.getElementById('notification');
-      notification.style.display = 'none';
-    }
-  </script>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
+  
 <!MainMenu>
 <html lang="id">
 <head>
